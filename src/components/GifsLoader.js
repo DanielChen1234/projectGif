@@ -19,8 +19,8 @@ export default class GifsLoader extends Component {
               </GridList>
     } else {
       return <GridList cols={1}>
-                <GridTile key={'52qtwCtj9OLTi'}>
-                  <img src={'https://media.giphy.com/media/52qtwCtj9OLTi/giphy.gif'} />
+                <GridTile key={'RqFXe34guTAAg'}>
+                  <img src={'https://media.giphy.com/media/RqFXe34guTAAg/giphy.gif'} />
                 </GridTile>
             </GridList>
     }
