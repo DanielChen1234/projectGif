@@ -16,13 +16,13 @@ export default class Search extends Component {
         this.state = {
             searchParamaters: '',
             gifs: [],
-            pictureAmount: 12,
+            pictureAmount: 6,
             MPPA: 'g'
         }
     }
 
     componentDidMount = () => {
-        const {data} = axios.get(`http://api.giphy.com/v1/gifs/search?q='hello'&api_key=${API}&limit=12&rating=g`)
+        const {data} = axios.get(`http://api.giphy.com/v1/gifs/search?q='hello'&api_key=${API}&limit=6&rating=g`)
             .then(gifArray => this.setState({gifs: gifArray.data.data}))
             .catch(err => console.log(err))
 
@@ -32,14 +32,15 @@ export default class Search extends Component {
 
 
     onSearchChange = (evt) => {
-        const searchParamaters = this.state.searchParamaters
+        const searchParamaters = this.state.searchParamaters.replace(' ', '+')
         const pictureAmount = this.state.pictureAmount
         const MPPA = this.state.MPPA
         const value = evt.target.value
 
         if (value !== ''){
+            console.log(searchParamaters)
             this.setState({[evt.target.name]: evt.target.value}, () => {
-                axios.get(`http://api.giphy.com/v1/gifs/search?q=${searchParamaters}&api_key=${API}&limit=${pictureAmount}&rating=${MPPA}`)
+                axios.get(`https://cors-anywhere.herokuapp.com/http://api.giphy.com/v1/gifs/search?q=${searchParamaters}&api_key=${API}&limit=${pictureAmount}&rating=${MPPA}`)
                     .then(gifArray => this.setState({gifs: gifArray.data.data}))
                     .catch(err => console.log(err))
             })
@@ -72,9 +73,9 @@ export default class Search extends Component {
             <GridList>
                 <GridTile>
                     <Selectfield name='pictureAmount' floatingLabelText='Pick a number, any number' value={this.state.pictureAmount} onChange={this.onNumberChange}>
-                        <MenuItem value={12} primaryText={'12'} />
-                        <MenuItem value={18} primaryText={'18'} />
-                        <MenuItem value={24} primaryText={'24'} />
+                        <MenuItem value={3} primaryText={'3'} />
+                        <MenuItem value={6} primaryText={'6'} />
+                        <MenuItem value={9} primaryText={'9'} />
                     </Selectfield>
                 </GridTile>
 
