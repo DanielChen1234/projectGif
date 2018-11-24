@@ -32,14 +32,14 @@ export default class Search extends Component {
 
 
     onSearchChange = (evt) => {
-        const searchParamaters = this.state.searchParamaters.replace(' ', '+')
+        const searchParamaters = this.state.searchParamaters.replace(' ', '+').toLowerCase()
         const pictureAmount = this.state.pictureAmount
         const MPPA = this.state.MPPA
         const value = evt.target.value
 
         if (value !== ''){
             this.setState({[evt.target.name]: evt.target.value}, () => {
-                axios.get(`https://cors-anywhere.herokuapp.com/http://api.giphy.com/v1/gifs/search?q=${searchParamaters}&api_key=${API}&limit=${pictureAmount}&rating=${MPPA}`)
+                axios.get(`https://cors-escape.herokuapp.com/http://api.giphy.com/v1/gifs/search?q='${searchParamaters}'&api_key=${API}&limit=${pictureAmount}&rating=${MPPA}`)
                     .then(gifArray => this.setState({gifs: gifArray.data.data}))
                     .catch(err => console.log(err))
             })
