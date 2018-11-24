@@ -16,13 +16,13 @@ export default class Search extends Component {
         this.state = {
             searchParamaters: '',
             gifs: [],
-            pictureAmount: 6,
+            pictureAmount: 12,
             MPPA: 'g'
         }
     }
 
     componentDidMount = () => {
-        const {data} = axios.get(`http://api.giphy.com/v1/gifs/search?q='keyboard'&api_key=${API}&limit=6&rating=g`)
+        const {data} = axios.get(`http://api.giphy.com/v1/gifs/search?q='hello'&api_key=${API}&limit=12&rating=g`)
             .then(gifArray => this.setState({gifs: gifArray.data.data}))
             .catch(err => console.log(err))
 
@@ -72,11 +72,12 @@ export default class Search extends Component {
             <GridList>
                 <GridTile>
                     <Selectfield name='pictureAmount' floatingLabelText='Pick a number, any number' value={this.state.pictureAmount} onChange={this.onNumberChange}>
-                        <MenuItem value={6} primaryText={'6'} />
                         <MenuItem value={12} primaryText={'12'} />
                         <MenuItem value={18} primaryText={'18'} />
+                        <MenuItem value={24} primaryText={'24'} />
                     </Selectfield>
                 </GridTile>
+
                 <GridTile>
                     <Selectfield name='MPPA-style rating' floatingLabelText='from Young -> Restricted' value={this.state.MPPA} onChange={this.onRatingChange}>
                         <MenuItem value={'y'} primaryText={'y'} />
