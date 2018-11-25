@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import API from '../secrets.js'
 import axios from 'axios'
 import GifsLoader from './GifsLoader'
-import Filter from './Filter'
+import SortAndFilter from './SortAndFilter'
 import TextField from 'material-ui/TextField'
 import Selectfield from 'material-ui/SelectField'
 import MenuItem from 'material-ui/MenuItem'
@@ -99,7 +99,7 @@ export default class Search extends Component {
                 </GridTile>
             </GridList>
 
-            Sort By: <Filter updateGifs={this.updateGifs} gifs={this.state.gifs} />
+            Sort By: <SortAndFilter updateGifs={this.updateGifs} gifs={this.state.gifs} />
             
             <GifsLoader gifs={this.state.gifs} />
         </div>

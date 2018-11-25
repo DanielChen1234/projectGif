@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Button from '@material-ui/core/Button';
 
-export default class Filter extends Component {
+export default class SortAndFilter extends Component {
 
   sort = (catagory) => {
     const updateGifs = this.props.updateGifs
