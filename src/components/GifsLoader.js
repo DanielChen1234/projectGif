@@ -4,6 +4,11 @@ import {GridList, GridTile} from 'material-ui/GridList'
 export default class GifsLoader extends Component {
   //Material-UI was used to allow the gifs to take up three columns, a number which I believe is perfect amount for user experience.
   //This is a loading screen in the 'else' condition in case the API query takes a while to load.
+
+  constructor(){
+    super();
+  }
+
   render() {
 
     const gifs = this.props.gifs
@@ -14,6 +19,7 @@ export default class GifsLoader extends Component {
                   <GridTile 
                   key={gif.id}
                   title={gif.title}
+                  subtitle={gif.import_datetime}
                   >
                     <img src={gif.images.downsized_large.url} />         
                   </GridTile>
