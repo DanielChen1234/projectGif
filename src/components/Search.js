@@ -24,7 +24,7 @@ export default class Search extends Component {
     }
 
     componentDidMount = () => {
-        const {data} = axios.get(`http://api.giphy.com/v1/gifs/search?q='hello'&api_key=${API}&limit=9&rating=g`) //This are the default gifs for the user
+        const {data} = axios.get(`http://api.giphy.com/v1/gifs/search?q='hello'&api_key=${API}&limit=9`) //This are the default gifs for the user
             .then(gifArray => this.setState({gifs: gifArray.data.data}))
             .catch(err => console.log(err))
 
@@ -69,7 +69,7 @@ export default class Search extends Component {
         console.log(this.state.gifs)
         return (
         <div>
-            <GridList cols={3}>
+            <GridList cols={3} cellHeight={'auto'}>
                 <GridTile>
                     <TextField
                         name= 'searchParamaters'
@@ -80,15 +80,7 @@ export default class Search extends Component {
                 </GridTile>
 
                 <GridTile>
-                    <Selectfield name='pictureAmount' floatingLabelText='Pick a number, any number' value={this.state.pictureAmount} onChange={this.onNumberChange}>
-                        <MenuItem value={6} primaryText={'6'} />
-                        <MenuItem value={9} primaryText={'9'} />
-                        <MenuItem value={12} primaryText={'12'} />
-                    </Selectfield>
-                </GridTile>
-
-                <GridTile>
-                    <Selectfield name='MPPA-style rating' floatingLabelText='from Young -> Restricted' value={this.state.MPPA} onChange={this.onRatingChange}>
+                    <Selectfield name='MPPA-style rating' floatingLabelText='Rating' value={this.state.MPPA} onChange={this.onRatingChange}>
                         <MenuItem value={''} primaryText={''} />
                         <MenuItem value={'y'} primaryText={'y'} />
                         <MenuItem value={'g'} primaryText={'g'} />
@@ -97,6 +89,15 @@ export default class Search extends Component {
                         <MenuItem value={'r'} primaryText={'r'} />
                     </Selectfield>
                 </GridTile>
+
+                <GridTile>
+                    <Selectfield name='pictureAmount' floatingLabelText='How many gifs?' value={this.state.pictureAmount} onChange={this.onNumberChange}>
+                        <MenuItem value={6} primaryText={'6'} />
+                        <MenuItem value={9} primaryText={'9'} />
+                        <MenuItem value={12} primaryText={'12'} />
+                    </Selectfield>
+                </GridTile>
+
             </GridList>
 
             Sort By: <SortAndFilter updateGifs={this.updateGifs} gifs={this.state.gifs} MPPA={this.state.MPPA} />
