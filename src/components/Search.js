@@ -14,15 +14,15 @@ export default class Search extends Component {
     constructor(){
         super()
         this.state = {
-            searchParamaters: '',
+            searchParamaters: '', //User inputted query for the API
             gifs: [],
             pictureAmount: 12,
-            MPPA: 'g'
+            MPPA: 'g' //Maturity rating for the gifs
         }
     }
 
     componentDidMount = () => {
-        const {data} = axios.get(`http://api.giphy.com/v1/gifs/search?q='hello'&api_key=${API}&limit=12&rating=g`)
+        const {data} = axios.get(`http://api.giphy.com/v1/gifs/search?q='hello'&api_key=${API}&limit=12&rating=g`) //This are the default gifs for the user
             .then(gifArray => this.setState({gifs: gifArray.data.data}))
             .catch(err => console.log(err))
 
@@ -32,7 +32,7 @@ export default class Search extends Component {
 
 
     onSearchChange = (evt) => {
-        const searchParamaters = this.state.searchParamaters
+        const searchParamaters = this.state.searchParamaters.replace(' ', '+').toLowerCase()//Giphy queries only accept '+' in lieu of spaces and only in lowercase. e.g. 'Ryan Gosling' -> 'ryan+gosling'
         const pictureAmount = this.state.pictureAmount
         const MPPA = this.state.MPPA
         const value = evt.target.value
@@ -50,11 +50,11 @@ export default class Search extends Component {
 
     onNumberChange = (evt, index, value) => {
         this.setState({pictureAmount: value})
-    }
+    } //This leverages the 'value' parameter from Material UI's <SelectField /> instead of the usual evt.target.value
 
     onRatingChange = (evt, index, value) => {
         this.setState({MPPA: value})
-    }
+    } //This leverages the 'value' parameter from Material UI's <SelectField /> instead of the usual evt.target.value
 
     render() {
 
