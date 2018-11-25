@@ -7,11 +7,19 @@ export default class SortAndFilter extends Component {
     const updateGifs = this.props.updateGifs
     const gifs = this.props.gifs
     const sortedGifs = gifs.sort((a, b) => new Date(b[catagory]) - new Date(a[catagory]))
+
     return updateGifs(sortedGifs)
   }
 
   filter = () => {
+    const updateGifs = this.props.updateGifs
+    const gifs = this.props.gifs
+    const MPPA = this.props.MPPA
+    const filteredGifs = gifs.filter((gif) => gif.rating === MPPA)
 
+    console.log(filteredGifs)
+
+    return updateGifs(filteredGifs)
   }
   
   render() {
@@ -26,7 +34,7 @@ export default class SortAndFilter extends Component {
           Trending
         </Button>
 
-        <Button variant="contained" color="primary" /*onClick={() => logState()}*/>
+        <Button variant="contained" color="primary" onClick={() => this.filter()}>
           MPPA Rating
         </Button>
       </div>

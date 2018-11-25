@@ -19,7 +19,7 @@ export default class GifsLoader extends Component {
                   <GridTile 
                   key={gif.id}
                   title={gif.title}
-                  subtitle={gif.import_datetime}
+                  subtitle={gif.rating}
                   >
                     <img src={gif.images.downsized_large.url} />         
                   </GridTile>

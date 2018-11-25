@@ -69,16 +69,16 @@ export default class Search extends Component {
         console.log(this.state.gifs)
         return (
         <div>
-            <TextField
-                name= 'searchParamaters'
-                value={this.state.searchText}
-                onChange={this.onSearchChange}
-                fullWidth = {true}
-                floatingLabelText = 'Gifs in a Jiffy'
-            />
-            <br/>
+            <GridList cols={3}>
+                <GridTile>
+                    <TextField
+                        name= 'searchParamaters'
+                        value={this.state.searchText}
+                        onChange={this.onSearchChange}
+                        floatingLabelText = 'Gifs in a Jiffy'
+                    />
+                </GridTile>
 
-            <GridList>
                 <GridTile>
                     <Selectfield name='pictureAmount' floatingLabelText='Pick a number, any number' value={this.state.pictureAmount} onChange={this.onNumberChange}>
                         <MenuItem value={6} primaryText={'6'} />
@@ -99,7 +99,7 @@ export default class Search extends Component {
                 </GridTile>
             </GridList>
 
-            Sort By: <SortAndFilter updateGifs={this.updateGifs} gifs={this.state.gifs} />
+            Sort By: <SortAndFilter updateGifs={this.updateGifs} gifs={this.state.gifs} MPPA={this.state.MPPA} />
             
             <GifsLoader gifs={this.state.gifs} />
         </div>
