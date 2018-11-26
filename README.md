@@ -4,7 +4,7 @@
 
 This app was developed to query Giphy's API with search parameters inputted by the user.
 
-I decided that the project required two major components: Search.js; SortAndFilter.js; GifsLoader.js.
+I decided that the project required three major components: Search.js; SortAndFilter.js; GifsLoader.js.
 
 1) Search.js is the most complex of the components, where axios calls are made to the giphy API based on user input, number of gifs shown, and maturity ratings.
 
