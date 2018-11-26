@@ -62,7 +62,7 @@ export default class Search extends Component {
 
     updateGifs = (gifs) => {
         this.setState({gifs})
-    } //This function is sent as props to the SortAndFilter function so that 4 different buttons can utilize it to update state.
+    } //This function is sent as props to the SortAndFilter component so that 4 different buttons can utilize it to update state.
 
     render() {
         return (

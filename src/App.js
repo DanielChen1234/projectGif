@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-
 import Nav from './components/Nav.js'
 import Search from './components/Search.js'
 
