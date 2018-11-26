@@ -26,7 +26,7 @@ export default class Search extends Component {
 
     componentDidMount = () => {
         const API = this.state.API
-        const {data} = axios.get(`http://api.giphy.com/v1/gifs/trending?&api_key=${API}&limit=24`) //This are the default(currently trending) gifs for the user
+        const {data} = axios.get(`https://api.giphy.com/v1/gifs/trending?&api_key=${API}&limit=24`) //This are the default(currently trending) gifs for the user
             .then(gifArray => this.setState({gifs: gifArray.data.data}))
             .catch(err => console.log(err))
 
@@ -44,7 +44,7 @@ export default class Search extends Component {
         const API = this.state.API
         if (value !== ''){ 
             this.setState({[evt.target.name]: evt.target.value}, () => {
-                axios.get(`http://api.giphy.com/v1/gifs/search?q=${searchParamaters}&api_key=${API}&limit=${pictureAmount}&rating=${MPPA}`)
+                axios.get(`https://api.giphy.com/v1/gifs/search?q=${searchParamaters}&api_key=${API}&limit=${pictureAmount}&rating=${MPPA}`)
                     .then(gifArray => this.setState({gifs: gifArray.data.data}))
                     .catch(err => console.log(err))
             })
