@@ -14,4 +14,4 @@ I decided that the project required two major components: Search.js; SortAndFilt
 
 Testing was done via Enzyme and Jest. 
 
-This web app is deployed on ______. Please take a look!
+This web app is deployed on https://danielchen1234.github.io/projectGif/. Please take a look!

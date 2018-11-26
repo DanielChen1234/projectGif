@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-// import API from '../secrets.js'
+import API from '../secrets.js'
 import axios from 'axios'
 import GifsLoader from './GifsLoader'
 import SortAndFilter from './SortAndFilter'
@@ -20,12 +20,10 @@ export default class Search extends Component {
             gifs: [],
             pictureAmount: 6,
             MPPA: '', //Maturity rating for the gifs
-            API: 'FCSB7IlSV6tLLJ9bgsRdsi6cMaodneDq'
         }
     }
 
     componentDidMount = () => {
-        const API = this.state.API
         const {data} = axios.get(`https://api.giphy.com/v1/gifs/trending?&api_key=${API}&limit=24`) //This are the default(currently trending) gifs for the user
             .then(gifArray => this.setState({gifs: gifArray.data.data}))
             .catch(err => console.log(err))
@@ -41,7 +39,6 @@ export default class Search extends Component {
         const MPPA = this.state.MPPA //the rating change brings everything up to and including the rating. 
         const value = evt.target.value // This is to keep track of an empty user input for conditional rendering. 
                                       //It was necessary to contain this in a variable due to issues in using evt.target.value rather than a variable.
-        const API = this.state.API
         if (value !== ''){ 
             this.setState({[evt.target.name]: evt.target.value}, () => {
                 axios.get(`https://api.giphy.com/v1/gifs/search?q=${searchParamaters}&api_key=${API}&limit=${pictureAmount}&rating=${MPPA}`)
