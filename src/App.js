@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './App.css';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
 import Nav from './components/Nav.js'

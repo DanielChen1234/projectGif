@@ -24,7 +24,7 @@ export default class Search extends Component {
     }
 
     componentDidMount = () => {
-        const {data} = axios.get(`http://api.giphy.com/v1/gifs/search?q='hello'&api_key=${API}&limit=9`) //This are the default gifs for the user
+        const {data} = axios.get(`http://api.giphy.com/v1/gifs/trending?&api_key=${API}&limit=24`) //This are the default(currently trending) gifs for the user
             .then(gifArray => this.setState({gifs: gifArray.data.data}))
             .catch(err => console.log(err))
 
@@ -36,10 +36,9 @@ export default class Search extends Component {
     onSearchChange = (evt) => {
         const searchParamaters = this.state.searchParamaters.replace(' ', '+').toLowerCase()//Giphy queries only accept '+' in lieu of spaces and only in lowercase. e.g. 'Ryan Gosling' -> 'ryan+gosling'.
         const pictureAmount = this.state.pictureAmount
-        const MPPA = this.state.MPPA
+        const MPPA = this.state.MPPA //the rating change brings everything up to and including the rating. 
         const value = evt.target.value // This is to keep track of an empty user input for conditional rendering. 
-                                      //It was necessary to contain this in a variable due to issues in using evt.target.value rather than a variable. 
-
+                                      //It was necessary to contain this in a variable due to issues in using evt.target.value rather than a variable.
         if (value !== ''){ 
             this.setState({[evt.target.name]: evt.target.value}, () => {
                 axios.get(`http://api.giphy.com/v1/gifs/search?q=${searchParamaters}&api_key=${API}&limit=${pictureAmount}&rating=${MPPA}`)
@@ -63,10 +62,9 @@ export default class Search extends Component {
 
     updateGifs = (gifs) => {
         this.setState({gifs})
-    }
+    } //This function is sent as props to the SortAndFilter function so that 4 different buttons can utilize it to update state.
 
     render() {
-        console.log(this.state.gifs)
         return (
         <div>
             <GridList cols={3} cellHeight={'auto'}>
@@ -100,8 +98,12 @@ export default class Search extends Component {
 
             </GridList>
 
-            Sort By: <SortAndFilter updateGifs={this.updateGifs} gifs={this.state.gifs} MPPA={this.state.MPPA} />
-            
+            <GridList cellHeight={'auto'}>
+                <GridTile>
+                    <SortAndFilter updateGifs={this.updateGifs} gifs={this.state.gifs} MPPA={this.state.MPPA} />
+                </GridTile>
+            </GridList>
+
             <GifsLoader gifs={this.state.gifs} />
         </div>
         )

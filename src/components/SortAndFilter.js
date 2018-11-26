@@ -6,7 +6,7 @@ export default class SortAndFilter extends Component {
   constructor(){
     super()
     this.state = {
-      ratingErr: 'FILTER BY RATING'
+      ratingErr: 'FILTER BY RATING'//state for the fourth button below.
     }
   }
 
@@ -15,9 +15,10 @@ export default class SortAndFilter extends Component {
     const gifs = this.props.gifs
     const sortedGifs = order === 'newest' ?
     gifs.sort((a, b) => new Date(b[catagory]) - new Date(a[catagory])) :
-    gifs.sort((a, b) => new Date(a[catagory]) - new Date(b[catagory]))
+    gifs.sort((a, b) => new Date(a[catagory]) - new Date(b[catagory])) 
+    //ternary operator used to determine whether the gif array should be newest to oldest or oldest to newest.
 
-    return updateGifs(sortedGifs)
+    return updateGifs(sortedGifs)//function that infuences the gif array in search.
   }
 
   filter = () => {
@@ -26,10 +27,14 @@ export default class SortAndFilter extends Component {
     const MPPA = this.props.MPPA
     const filteredGifs = gifs.filter((gif) => gif.rating === MPPA)
     
-    if(MPPA === ''){
-      this.setState({ratingErr: 'Select a rating above then click this'})
+    if(MPPA === ''){ //empty quotes if the user does not toggle a rating on the Search component
+      this.setState({ratingErr: 'SELECT A RATING ABOVE THEN CLICK'}, () => {
+        setTimeout(() => {
+          this.setState({ratingErr: 'FILTER BY RATING'})
+        }, 3000)//the button will display 'Select a rating above then click' for 3 seconds then switches to 'FILTER BY RATING
+      })
     } else {
-      return updateGifs(filteredGifs)
+      return updateGifs(filteredGifs)//function that infuences the gif array in search.
     }
   }
   
@@ -37,19 +42,19 @@ export default class SortAndFilter extends Component {
 
     return (
       <div>
-        <Button variant="contained" color="primary" onClick={() => this.sort('import_datetime', 'newest')}>
+        <Button variant="outlined" color="primary" onClick={() => this.sort('import_datetime', 'newest')}>
           Newest
         </Button>
 
-        <Button variant="contained" color="primary" onClick={() => this.sort('import_datetime', 'oldest')}>
+        <Button variant="outlined" color="primary" onClick={() => this.sort('import_datetime')}>
           Oldest
         </Button>
 
-        <Button variant="contained" color="primary" onClick={() => this.sort('trending_datetime', 'newest')}>
+        <Button variant="outlined" color="primary" onClick={() => this.sort('trending_datetime', 'newest')}>
           Trending
         </Button>
 
-        <Button variant="contained" color="primary" onClick={() => this.filter()}>
+        <Button variant="outlined" color="primary" onClick={() => this.filter()}>
           {this.state.ratingErr}
         </Button>
       </div>
