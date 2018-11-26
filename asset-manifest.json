@@ -1,13 +1,13 @@
 {
-  "main.css": "/projectGif/static/css/main.7c479edc.chunk.css",
-  "main.js": "/projectGif/static/js/main.a0277900.chunk.js",
-  "main.js.map": "/projectGif/static/js/main.a0277900.chunk.js.map",
-  "static/js/1.1e7a89b8.chunk.js": "/projectGif/static/js/1.1e7a89b8.chunk.js",
-  "static/js/1.1e7a89b8.chunk.js.map": "/projectGif/static/js/1.1e7a89b8.chunk.js.map",
+  "main.css": "/projectGif/static/css/main.0f164b5f.chunk.css",
+  "main.js": "/projectGif/static/js/main.2761d434.chunk.js",
+  "main.js.map": "/projectGif/static/js/main.2761d434.chunk.js.map",
+  "static/js/1.0661daf8.chunk.js": "/projectGif/static/js/1.0661daf8.chunk.js",
+  "static/js/1.0661daf8.chunk.js.map": "/projectGif/static/js/1.0661daf8.chunk.js.map",
   "runtime~main.js": "/projectGif/static/js/runtime~main.ac02e368.js",
   "runtime~main.js.map": "/projectGif/static/js/runtime~main.ac02e368.js.map",
-  "static/css/main.7c479edc.chunk.css.map": "/projectGif/static/css/main.7c479edc.chunk.css.map",
+  "static/css/main.0f164b5f.chunk.css.map": "/projectGif/static/css/main.0f164b5f.chunk.css.map",
   "index.html": "/projectGif/index.html",
-  "precache-manifest.905f286a067b10570cf0d660c200a93b.js": "/projectGif/precache-manifest.905f286a067b10570cf0d660c200a93b.js",
+  "precache-manifest.d26d118632ec3eae1b9d4e5c5199f455.js": "/projectGif/precache-manifest.d26d118632ec3eae1b9d4e5c5199f455.js",
   "service-worker.js": "/projectGif/service-worker.js"
 }
