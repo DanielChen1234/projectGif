@@ -4,12 +4,14 @@
 
 This app was developed to query Giphy's API with search parameters inputted by the user.
 
-I decided that the project required two major components: Search.js; GifsLoader.js.
+I decided that the project required two major components: Search.js; SortAndFilter.js; GifsLoader.js.
 
 1) Search.js is the most complex of the components, where axios calls are made to the giphy API based on user input, number of gifs shown, and maturity ratings.
 
-2) GifsLoader.js utilizes the Material UI, specifically GridList & GridTile, to make a three column display, with the row amount determined by the user in Search.js. This the gifs to take up the maximum amount of space alloted on the screen.
+2) SortAndFilter.js uses a state update function passed down as props from Search.js. The sole purpose of this component is to handle change/click events and determine sorting patterns/filter patterns for the Giphy query.
 
-Testing was done via ______. 
+3) GifsLoader.js utilizes the Material UI, specifically GridList & GridTile, to make a three column display, with the row amount determined by the user in Search.js. This the gifs to take up the maximum amount of space alloted on the screen.
+
+Testing was done via Enzyme and Jest. 
 
 This web app is deployed on ______. Please take a look!
