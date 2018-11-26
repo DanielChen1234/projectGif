@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import API from '../secrets.js'
 import axios from 'axios'
 import GifsLoader from './GifsLoader'
 import SortAndFilter from './SortAndFilter'
@@ -18,13 +19,11 @@ export default class Search extends Component {
             searchParamaters: '', //User inputted query for the API
             gifs: [],
             pictureAmount: 6,
-            MPPA: '', //Maturity rating for the gifs
-            API: 'FCSB7IlSV6tLLJ9bgsRdsi6cMaodneDq'
+            MPPA: '' //Maturity rating for the gifs
         }
     }
 
     componentDidMount = () => {
-        const API = this.state.API
         const {data} = axios.get(`http://api.giphy.com/v1/gifs/trending?&api_key=${API}&limit=24`) //This are the default(currently trending) gifs for the user
             .then(gifArray => this.setState({gifs: gifArray.data.data}))
             .catch(err => console.log(err))
@@ -35,7 +34,6 @@ export default class Search extends Component {
 
 
     onSearchChange = (evt) => {
-        const API = this.state.API
         const searchParamaters = this.state.searchParamaters.replace(' ', '+').toLowerCase()//Giphy queries only accept '+' in lieu of spaces and only in lowercase. e.g. 'Ryan Gosling' -> 'ryan+gosling'.
         const pictureAmount = this.state.pictureAmount
         const MPPA = this.state.MPPA //the rating change brings everything up to and including the rating. 
