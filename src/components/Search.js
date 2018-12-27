@@ -24,11 +24,9 @@ export default class Search extends Component {
     }
 
     componentDidMount = () => {
-        const {data} = axios.get(`https://api.giphy.com/v1/gifs/trending?&api_key=${API}&limit=24`) //This are the default(currently trending) gifs for the user
+        axios.get(`https://api.giphy.com/v1/gifs/trending?&api_key=${API}&limit=24`) //This are the default(currently trending) gifs for the user
             .then(gifArray => this.setState({gifs: gifArray.data.data}))
             .catch(err => console.log(err))
-
-        this.setState({gifs: data})
     }
 
 
@@ -57,12 +55,11 @@ export default class Search extends Component {
 
     onRatingChange = (evt, index, value) => {
         this.setState({MPPA: value})
-    } //This leverages the 'value' parameter from Material UI's <SelectField /> instead of the usual evt.target.value. 
-     //This is also the reason why I have two similar event handlers instead of having one handler and using setState({[evt.target.name]: evt.target.value}).
-
+    }
+    
     updateGifs = (gifs) => {
         this.setState({gifs})
-    } //This function is sent as props to the SortAndFilter component so that 4 different buttons can utilize it to update state.
+    }
 
     render() {
         return (

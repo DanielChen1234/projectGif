@@ -6,7 +6,10 @@
   "dependencies": {
     "@material-ui/core": "^3.5.1",
     "axios": "^0.18.0",
+    "identity-obj-proxy": "^3.0.0",
+    "install": "^0.12.2",
     "material-ui": "^0.20.2",
+    "npm": "^6.4.1",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-scripts": "2.1.1"
@@ -14,7 +17,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "jest",
+    "test": "react-scripts test --env=jsdom",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "eject": "react-scripts eject"
@@ -29,6 +32,11 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "@babel/cli": "^7.1.5",
+    "@babel/core": "^7.1.6",
+    "babel-jest": "^23.6.0",
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.7.0",
     "gh-pages": "^2.0.1",
     "jest": "^23.6.0"
   }

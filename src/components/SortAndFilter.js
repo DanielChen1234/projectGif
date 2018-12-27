@@ -18,7 +18,7 @@ export default class SortAndFilter extends Component {
     gifs.sort((a, b) => new Date(a[catagory]) - new Date(b[catagory])) 
     //ternary operator used to determine whether the gif array should be newest to oldest or oldest to newest.
 
-    return updateGifs(sortedGifs)//function that infuences the gif array in search.
+    return updateGifs(sortedGifs)
   }
 
   filter = () => {
@@ -31,10 +31,10 @@ export default class SortAndFilter extends Component {
       this.setState({ratingErr: 'SELECT A RATING ABOVE THEN CLICK'}, () => {
         setTimeout(() => {
           this.setState({ratingErr: 'FILTER BY RATING'})
-        }, 3000)//the button will display 'Select a rating above then click' for 3 seconds then switches to 'FILTER BY RATING'
+        }, 3000)
       })
     } else {
-      return updateGifs(filteredGifs)//function that infuences the gif array in search.
+      return updateGifs(filteredGifs)
     }
   }
   
